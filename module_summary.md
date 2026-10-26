@@ -233,25 +233,12 @@ The version-control history contains commits corresponding to the individual sec
 To recreate the environment and execute the notebook, run the following commands from the project directory:
 
 ```bash
-python -m venv .venv
+uv venv --python 3.13 .venv
+uv pip install --python .venv -r requirements.txt
+.venv\Scripts\python.exe -m nbconvert --to notebook --execute --inplace data_workflow.ipynb
 ```
 
-On Windows:
-
-```bash
-.venv\Scripts\Activate.ps1        (PowerShell)
-.venv\Scripts\activate.bat        (Command Prompt)
-pip install -r requirements.txt
-python -m nbconvert --to notebook --execute --inplace data_workflow.ipynb
-```
-
-On Linux or macOS:
-
-```bash
-source .venv/bin/activate
-pip install -r requirements.txt
-python -m nbconvert --to notebook --execute --inplace data_workflow.ipynb
-```
+The `--python 3.13` flag pins the interpreter major version that the commands in this section rely on. On macOS and Linux the last command reads `.venv/bin/python` instead, and `--clear` replaces an existing `.venv`. The standard-library equivalent (`python -m venv`, activate, `pip install -r requirements.txt`) is documented as Alternative Setup in the repository's README.
 
 The data_workflow.ipynb notebook is designed to run without internet access once the required packages and input file are available. Package pinning and a self-contained analytical document support reproducibility, in line with the practices discussed by Danchev (2022).
 
