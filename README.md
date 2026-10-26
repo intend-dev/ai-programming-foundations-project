@@ -24,6 +24,25 @@ summary that separates what the numbers support from what they cannot say.
 - Five labelled figures, each with a title, labeled axes, and a written
   interpretation.
 - `requirements.txt`: the pinned environment, captured with `pip freeze`.
+- `module_summary.md`: the written module summary, with the five figures
+  embedded and every number traced to a printed notebook output.
+- `data_workflow.html` and `data_workflow.pdf`: exported snapshots of the
+  executed notebook, readable without any Jupyter setup.
+
+## Key Findings
+
+| Group | Survival rate |
+|---|---:|
+| Overall | `38.38%` |
+| Women | `74.20%` |
+| Men | `18.89%` |
+| First class | `62.96%` |
+| Second class | `47.28%` |
+| Third class | `24.24%` |
+
+These are associations from one voyage, not causes. The title breakdown
+(`Mrs` `79.20%` against `Mr` `15.67%`) and the cabin-deck rates, with their
+caveats, are in `module_summary.md`.
 
 ## Files
 
@@ -33,6 +52,9 @@ summary that separates what the numbers support from what they cannot say.
 | `titanic.csv` | the dataset, read from disk |
 | `figures/` | the five figure PNGs, saved by the notebook's figure cells on each run |
 | `requirements.txt` | the pinned environment (a full `pip freeze`) |
+| `module_summary.md` | the written module summary (the report) |
+| `data_workflow.html` | HTML snapshot of the executed notebook |
+| `data_workflow.pdf` | PDF snapshot of the executed notebook |
 | `README.md` | this file |
 
 ## Dataset
@@ -58,21 +80,44 @@ uv pip install --python .venv -r requirements.txt
 .venv\Scripts\python.exe -m nbconvert --to notebook --execute --inplace data_workflow.ipynb
 ```
 
-Standard-library alternative: `python -m venv .venv`, then activate in PowerShell
-with `.venv\Scripts\Activate.ps1` or in Command Prompt with
-`.venv\Scripts\activate.bat` (macOS and Linux: `source .venv/bin/activate`),
-then `pip install -r requirements.txt`. The freeze was captured on
-Windows and includes two Windows-only packages (`colorama`, `pywinpty`); on
-macOS or Linux install `numpy pandas matplotlib seaborn jupyter nbconvert` at
-the pinned versions instead. Opening `data_workflow.ipynb` and running all
-cells does the same thing; the nbconvert command rewrites the notebook in
-place, so copy it first if you want to keep the stored outputs.
+### Alternative Setup
 
-To regenerate the environment file from your own environment:
+You can also use Python's built-in virtual environment tools instead of `uv`.
+Create a virtual environment, activate it, and install the required packages
+using `requirements.txt`. Activation differs by shell:
+
+- PowerShell: `.venv\Scripts\Activate.ps1`
+- Command Prompt: `.venv\Scripts\activate.bat`
+- macOS and Linux: `source .venv/bin/activate`
+
+The dependency file was generated on Windows and carries two Windows-only
+packages (`colorama`, `pywinpty`); on macOS or Linux, install `numpy pandas
+matplotlib seaborn jupyter nbconvert` at the pinned versions instead.
+
+You can also open `data_workflow.ipynb` in Jupyter and run the cells manually.
+If you execute it using the command line, the notebook's saved outputs will
+be overwritten, so back up the notebook first if you want to keep the stored
+outputs.
+
+### Updating Requirements
+
+To update `requirements.txt` from the project's `.venv`:
 
 ```text
-pip freeze > requirements.txt
+uv pip freeze --python .venv | Out-File requirements.txt -Encoding ascii
 ```
+
+The `Out-File` step sidesteps a PowerShell quirk where `>` writes UTF-16; on
+macOS and Linux, standard output redirection (`>`) is sufficient.
+
+The generated file may differ from the committed version: it lists `pip`
+itself and spells some names with hyphens (`jupyter-client` for the committed
+`jupyter_client`), which `pip` resolves identically.
+
+Make sure the freeze runs in the project's environment; a bare `python` on
+`PATH` captures the system interpreter instead of this `3.13.15` venv.
+Remember that `pip freeze` lists all installed packages, not just the ones
+the notebook uses.
 
 ## Bias Awareness
 
