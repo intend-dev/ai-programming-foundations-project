@@ -1,3 +1,2 @@
-# Preserve submission bytes exactly: the package mixes LF text files with a CRLF notebook,
-# and the repo must hash-match the zip.
+# Keep file bytes exactly as committed; the notebook is stored with CRLF.
 * -text
