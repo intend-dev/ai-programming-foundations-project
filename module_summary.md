@@ -4,7 +4,8 @@
 
 ## 1. Overview
 
-In this project, I constructed a reproducible data analysis workflow for Kaggle's *Titanic: Machine Learning from Disaster* dataset (Kaggle, 2012) to examine how passenger characteristics relate to survival, following a
+In this project, I constructed a reproducible data analysis workflow for Kaggle's [*Titanic: Machine Learning from Disaster*](https://www.kaggle.com/c/titanic/data) dataset (Kaggle, 2012) to examine how passenger
+characteristics relate to survival, following a
 structured approach to data ingestion, cleaning, exploratory analysis, visualization, and interpretation.
 
 The analysis is implemented in `data_workflow.ipynb`, which contains the code, outputs, figures, and written conclusions in a single document. Following the principles described by Rule et al. (2019), the notebook is designed to make the analytical process understandable and reproducible, rather than presenting only

@@ -84,7 +84,8 @@ uv pip install --python .venv -r requirements.txt
 
 You can also use Python's built-in virtual environment tools instead of `uv`.
 Create a virtual environment, activate it, and install the required packages
-using `requirements.txt`. Activation differs by shell:
+using `requirements.txt`; the course instructions document this step as
+`pip install -r requirements.txt`. Activation differs by shell:
 
 - PowerShell: `.venv\Scripts\Activate.ps1`
 - Command Prompt: `.venv\Scripts\activate.bat`
