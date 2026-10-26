@@ -154,5 +154,6 @@ the notebook uses.
 ## Repository
 
 The project is version controlled, committed section by section on
-`development`, alongside `main`. The repository link is supplied with the
-submission.
+`development`, alongside `main`. The full commit history and both branches
+are public at
+<https://github.com/intend-dev/ai-programming-foundations-project>.

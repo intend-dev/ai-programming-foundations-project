@@ -229,7 +229,8 @@ The project includes a `requirements.txt` file generated from the environment us
 The environment that produced the stored outputs runs Python `3.13.15`, the version the notebook's setup cell prints beside the library versions. The interpreter version is recorded here because the title extraction calls
 `str.removeprefix()`, a method available only from Python `3.9` onward.
 
-The version-control history contains commits corresponding to the individual sections of the work on a development branch alongside the default branch, making the development process inspectable.
+The version-control history contains commits corresponding to the individual sections of the work on a development branch alongside the default branch, making the development process inspectable. The repository and its
+full commit history are public at https://github.com/intend-dev/ai-programming-foundations-project.
 
 To recreate the environment and execute the notebook, run the following commands from the project directory:
 
