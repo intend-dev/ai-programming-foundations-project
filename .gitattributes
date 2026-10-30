@@ -1,2 +1,5 @@
 # Keep file bytes exactly as committed; the notebook is stored with CRLF.
 * -text
+
+# Notebook export is generated output; keep it out of the language breakdown.
+data_workflow.html linguist-generated
